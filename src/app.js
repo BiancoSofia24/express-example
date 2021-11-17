@@ -4,12 +4,14 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.static(__dirname + '/public'));
+app.set('views', __dirname + '/views');
+app.set('view engine', 'ejs');
+
+// app.use(express.static(__dirname + '/public'));
 
 app.use('/', require('./router'));
 
 app.use((request, response, next) => response.status(404).send('404 Not Found'));
-
 // app.use((request, response, next) => response.status(404).redirect('/'));
 
 app.listen(port, () => {
