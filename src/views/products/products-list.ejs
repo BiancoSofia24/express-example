@@ -7,6 +7,15 @@
   <title>Products</title>
 </head>
 <body>
+  <%- include('../partials/nav-menu') -%>
+
   <h1>Products List</h1>
+
+  <% products.map(({id, name}) => { %>
+    <h3>
+      <a href='/product/<%= id %>'><%= name %></a>
+    </h3>
+  <% }); %>
+
 </body>
 </html>
